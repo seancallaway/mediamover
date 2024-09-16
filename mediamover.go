@@ -22,7 +22,12 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) error {
+		config, err := NewConfig(c.String("config"))
+		if err != nil {
+			log.Fatal(err)
+		}
 		fmt.Println("This doesn't do anything yet. Sorry.")
+		fmt.Println(config.TvRoot)
 		return nil
 	}
 
