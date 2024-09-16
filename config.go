@@ -11,6 +11,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 )
 
@@ -25,7 +26,18 @@ func NewConfig(filename string) (Config, error) {
 
 	confFile, err := os.Open(filename)
 	if err != nil {
-		return cf, err
+		if os.IsNotExist(err) {
+			// Create the config file
+			configTemplate := []byte("{\n\t\"api_key\": \"\",\n\t\"tv_root\": \"\",\n\t\"movie_root\": \"\"\n}\n")
+			err = os.WriteFile(filename, configTemplate, 0640)
+			if err != nil {
+				return cf, err
+			} else {
+				return cf, fmt.Errorf("Config file %s did not exist, was created, and requires configuration", filename)
+			}
+		} else {
+			return cf, err
+		}
 	}
 
 	defer confFile.Close()
