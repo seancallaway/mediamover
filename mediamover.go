@@ -13,6 +13,14 @@ func main() {
 	app.Name = "mediamover"
 	app.Usage = "Rename and move movie and TV files"
 
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "config, c",
+			Value: "config.json",
+			Usage: "Load configuration from `FILE`",
+		},
+	}
+
 	app.Action = func(c *cli.Context) error {
 		fmt.Println("This doesn't do anything yet. Sorry.")
 		return nil
