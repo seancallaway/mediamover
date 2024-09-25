@@ -8,6 +8,14 @@ import (
 	"github.com/spf13/viper"
 )
 
+type Config struct {
+	Default struct {
+		ApiKey    string `mapstructure:"api_key"`
+		TvRoot    string `mapstructure:"tv_root"`
+		MovieRoot string `mapstructure:"movie_root"`
+	}
+}
+
 var configFile string
 
 var rootCmd = &cobra.Command{
