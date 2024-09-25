@@ -22,10 +22,8 @@ func isVideoFile(extention string) bool {
 
 func getFileList(path string) ([]string, error) {
 	_, err := os.Stat(path)
-	if err != nil {
-		if os.IsNotExist(err) {
-			return nil, errors.New(path + "does not exist")
-		}
+	if err != nil && os.IsNotExist(err) {
+		return nil, errors.New(path + " does not exist")
 	}
 
 	var files []string
