@@ -23,9 +23,6 @@ var rootCmd = &cobra.Command{
 	Short: "mediamover is a tool for organizing your media files",
 	Long: `A tool for identifying and renaming movie and television show
     files using The Movie Database (https://themoviedb.org)`,
-	Run: func(cmd *cobra.Command, args []string) {
-		// do stuff here.
-	},
 }
 
 func Execute() {

@@ -36,9 +36,5 @@ func getFileList(path string) ([]string, error) {
 		}
 		return nil
 	})
-	if err != nil {
-		return files, err
-	}
-
-	return files, nil
+	return files, err
 }
