@@ -5,20 +5,9 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
-	"slices"
-	"strings"
+
+	"github.com/seancallaway/mediamover/media"
 )
-
-func isVideoFile(extention string) bool {
-	videoFileExtensions := []string{
-		"avi",
-		"mkv",
-		"mp4",
-		"mpg",
-	}
-
-	return slices.Contains(videoFileExtensions, strings.ToLower(extention))
-}
 
 func getFileList(path string) ([]string, error) {
 	_, err := os.Stat(path)
@@ -29,7 +18,7 @@ func getFileList(path string) ([]string, error) {
 	var files []string
 
 	err = filepath.WalkDir(path, func(filename string, d fs.DirEntry, err error) error {
-		if !d.IsDir() && isVideoFile(filepath.Ext(filename)) {
+		if !d.IsDir() && media.IsVideoFile(filename) {
 			files = append(files, filename)
 		}
 		return nil
