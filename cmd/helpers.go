@@ -39,6 +39,10 @@ func copyFile(src string, dest string) (int64, error) {
 		return 0, errors.New(src + " is not a regular file")
 	}
 
+	if _, err = os.Stat(dest); err == nil {
+		return 0, errors.New(dest + " already exists")
+	}
+
 	source, err := os.Open(src)
 	if err != nil {
 		return 0, err
