@@ -28,6 +28,8 @@ func init() {
 	cobra.OnInitialize(loadConfig)
 
 	rootCmd.PersistentFlags().StringVarP(&configFile, "config", "c", "config.ini", "The configuration file")
+	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "Produce verbose output")
+	viper.BindPFlag("verbose", rootCmd.PersistentFlags().Lookup("verbose"))
 }
 
 func loadConfig() {
