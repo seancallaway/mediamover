@@ -36,7 +36,6 @@
 
 - [About the Project](#star2-about-the-project)
   * [Screenshots](#camera-screenshots)
-  * [Tech Stack](#space_invader-tech-stack)
   * [Features](#dart-features)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
@@ -59,14 +58,6 @@
 <div align="center"> 
   <h3>Coming soon!
 </div>
-
-<!-- TechStack -->
-### :space_invader: Tech Stack
-
-- [Golang](https://go.dev/)
-- [Cobra](https://cobra.dev/)
-- [Viper](https://github.com/spf13/viper)
-- [regexp2](https://github.com/dlclark/regexp2)
 
 <!-- Features -->
 ### :dart: Features
@@ -148,3 +139,12 @@ Distributed under the Apache 2.0 License. See [LICENSE](LICENSE) for more inform
 Your Name - [@seancallaway](https://mastodon.social/@seancallaway) - seancallaway@gmail.com
 
 Project Link: [https://github.com/seancallaway/mediamover](https://github.com/seancallaway/mediamover)
+
+<!-- Acknowledgments -->
+## :gem: Acknowledgements
+
+**mediamover** wouldn't be possible without the following packages:
+
+ - [regexp2](https://github.com/dlclark/regexp2)
+ - [Cobra](https://cobra.dev/)
+ - [Viper](https://github.com/spf13/viper)
