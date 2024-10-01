@@ -49,9 +49,10 @@ var showsCmd = &cobra.Command{
 
 			destinationFilename := data.Title + " S" + data.Season + "E" + data.Episode + filepath.Ext(file)
 			finalFile := filepath.Join(destinationPath, destinationFilename)
-			// TODO: Test to see if file already exists and skip.
 
-			fmt.Println("Writing file to", finalFile) // TODO: Only show this in verbose mode.
+			if viper.GetBool("verbose") {
+				fmt.Println("Writing file to", finalFile)
+			}
 			// TODO: Move or copy the file, depending on flag.
 			if _, err := copyFile(file, finalFile); err != nil {
 				fmt.Fprintf(os.Stderr, "Unable to write file %s: %q", finalFile, err)
