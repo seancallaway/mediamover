@@ -38,16 +38,28 @@ var showsCmd = &cobra.Command{
 				continue
 			}
 
-			showPath := filepath.Join(viper.GetString("default.tv_root"), data.Title)
-			destinationPath := filepath.Join(showPath, "Season "+data.Season)
-			// TODO: Create directory if doesn't exist.
+			destinationPath, err := getDestinationPath(data, true)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Unable to determine destination directory: %q", err)
+			}
+			// Ensure directory exists
+			if os.MkdirAll(destinationPath, os.ModePerm); err != nil {
+				fmt.Fprintf(os.Stderr, "Unable to create directory %s: %q", destinationPath, err)
+			}
 
 			destinationFilename := data.Title + " S" + data.Season + "E" + data.Episode + filepath.Ext(file)
-
 			finalFile := filepath.Join(destinationPath, destinationFilename)
+			// TODO: Test to see if file already exists and skip.
 
-			fmt.Println("Writing file to", finalFile)
+			fmt.Println("Writing file to", finalFile) // TODO: Only show this in verbose mode.
 			// TODO: Move or copy the file, depending on flag.
+			if _, err := copyFile(file, finalFile); err != nil {
+				fmt.Fprintf(os.Stderr, "Unable to write file %s: %q", finalFile, err)
+			} else {
+				if viper.GetBool("verbose") {
+					fmt.Println("Wrote", finalFile)
+				}
+			}
 		}
 		return nil
 	},

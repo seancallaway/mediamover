@@ -10,6 +10,7 @@ type Media struct {
 	Season   string
 	Episode  string
 	AltTitle string
+	Genre    string
 }
 
 func ParseFilename(filename string, tvShow bool) (Media, error) {
