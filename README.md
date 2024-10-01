@@ -136,7 +136,7 @@ Distributed under the Apache 2.0 License. See [LICENSE](LICENSE) for more inform
 <!-- Contact -->
 ## :handshake: Contact
 
-Your Name - [@seancallaway](https://mastodon.social/@seancallaway) - seancallaway@gmail.com
+Sean Callaway - [@seancallaway](https://mastodon.social/@seancallaway) - seancallaway@gmail.com
 
 Project Link: [https://github.com/seancallaway/mediamover](https://github.com/seancallaway/mediamover)
 
