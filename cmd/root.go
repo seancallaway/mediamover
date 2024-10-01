@@ -8,14 +8,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Config struct {
-	Default struct {
-		ApiKey    string `mapstructure:"api_key"`
-		TvRoot    string `mapstructure:"tv_root"`
-		MovieRoot string `mapstructure:"movie_root"`
-	}
-}
-
 var configFile string
 
 var rootCmd = &cobra.Command{
@@ -44,6 +36,6 @@ func loadConfig() {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		fmt.Println("Unable to load config file:", viper.ConfigFileUsed())
+		fmt.Fprintf(os.Stderr, "Unable to load config file: %s", viper.ConfigFileUsed())
 	}
 }

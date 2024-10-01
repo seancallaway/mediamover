@@ -2,8 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 
+	"github.com/seancallaway/mediamover/media"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 func init() {
@@ -27,9 +31,23 @@ var showsCmd = &cobra.Command{
 		}
 
 		// Load files
-		fmt.Println("Will load the following files:\n")
 		for _, file := range fileList {
-			fmt.Println("-", file)
+			data, err := media.ParseFilename(file, true)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Unable to identify %s", file)
+				continue
+			}
+
+			showPath := filepath.Join(viper.GetString("default.tv_root"), data.Title)
+			destinationPath := filepath.Join(showPath, "Season "+data.Season)
+			// TODO: Create directory if doesn't exist.
+
+			destinationFilename := data.Title + " S" + data.Season + "E" + data.Episode + filepath.Ext(file)
+
+			finalFile := filepath.Join(destinationPath, destinationFilename)
+
+			fmt.Println("Writing file to", finalFile)
+			// TODO: Move or copy the file, depending on flag.
 		}
 		return nil
 	},
