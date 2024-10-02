@@ -10,6 +10,7 @@ func TestMovieRegex(t *testing.T) {
 		"Raiders of the Lost Ark (1981).mkv",
 		"For.a.Few.Dollars.More.1965.avi",
 		"Apartment.7A.2024.1080p.WEBRip.x264.AAC5.1-[YTS.MX].mp4",
+		"Fly.Me.To.The.Moon.2024.1080p.WEBRip.x265.10bit.AAC5.1-[YTS.MX].mp4",
 	}
 
 	var expectedResults = []struct {
@@ -20,8 +21,7 @@ func TestMovieRegex(t *testing.T) {
 		{"Raiders of the Lost Ark", "1981"},
 		{"For a Few Dollars More", "1965"},
 		{"Apartment 7A", "2024"},
-		{"SEAL Team", ""},
-		{"Futurama", ""},
+		{"Fly Me To The Moon", "2024"},
 	}
 
 	for i, filename := range filenames {
