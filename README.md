@@ -56,7 +56,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <h3>Coming soon!
+  <h3>Coming soon!</h3>
 </div>
 
 <!-- Features -->
@@ -71,7 +71,8 @@
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-You must have a valid API key for TVDB.
+You must have a valid API key for [TMDB](https://www.themoviedb.org/). To register for a free API key, click the
+[API link](https://www.themoviedb.org/settings/api) from within your account settings page.
 
 <!-- Installation -->
 ### :gear: Installation
@@ -83,21 +84,30 @@ We'll have better installation options in the future.
 <!-- Usage -->
 ## :eyes: Usage
 
-After installing create a `config.ini` file in the following format:
+After installing create a `config.ini` file in the same folder where you placed **mediamover** using the following
+format:
 
 ```ini
-api_key = <YOUR_TVDB_API_KEY>
+api_key = <YOUR_TMDB_API_KEY>
 tv_root = <The Path to Store Your TV Show Files>
 movie_root = <The Path to Store Your Movie Files>
+```
+
+For example,
+
+```ini
+api_key    = abcdef123456abcdef123456
+tv_root    = ~/Videos/TVShows/
+movie_root = ~/Videos/Movies/ 
 ```
 
 After that's created and the values are set properly, you can load your movies or shows.
 
 ### :tv: TV Shows
 
-```bash
+```
 $ mediamover -v tvshows ~/Downloads/TVShows
-Wrote ~/TV/Only Murders in the Building/Season 04/Only Murders in the Building S04E04.mkv
+Wrote ~/Videos/TV/Only Murders in the Building/Season 04/Only Murders in the Building S04E04.mkv
 Wrote ~/Videos/TV/Only Murders in the Building/Season 04/Only Murders in the Building S04E05.mkv
 Wrote ~/Videos/TV/SEAL Team/Season 07/SEAL Team S07E05.mkv
 Unable to write file ~/Videos/TV/The Rookie/Season 06/The Rookie S06E07.mkv: "~/Videos/TV/The Rookie/Season 06/The Rookie S06E07.mkv already exists"
@@ -105,7 +115,12 @@ Unable to write file ~/Videos/TV/The Rookie/Season 06/The Rookie S06E07.mkv: "~/
 
 ### :movie_camera: Movies
 
-_Coming soon._
+```
+$ mediamovier -v movies ~/Downloads/Movies
+Wrote ~/Videos/Movies/Action/The Killers Game (2024).mkv
+Wrote ~/Videos/Movies/Comedy/The Radleys (2024).mkv
+Wrote ~/Videos/Movies/Horror/Opera (1987).mkv
+```
 
 <!-- Roadmap -->
 ## :compass: Roadmap
@@ -148,3 +163,10 @@ Project Link: [https://github.com/seancallaway/mediamover](https://github.com/se
  - [regexp2](https://github.com/dlclark/regexp2)
  - [Cobra](https://cobra.dev/)
  - [Viper](https://github.com/spf13/viper)
+
+Genre lookups for movies are made using
+
+<a href="https://www.themoviedb.org/">
+  <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg"
+       width="200" />
+</a>
