@@ -36,8 +36,8 @@ func loadConfig() {
 	viper.SetConfigFile(configFile)
 	viper.AutomaticEnv()
 
-	err := viper.ReadInConfig()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to load config file: %s", viper.ConfigFileUsed())
+	if err := viper.ReadInConfig(); err != nil {
+		fmt.Fprintf(os.Stderr, "Unable to load config file: %s\n", viper.ConfigFileUsed())
+		os.Exit(1)
 	}
 }
