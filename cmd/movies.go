@@ -40,11 +40,11 @@ var moviesCmd = &cobra.Command{
 
 			destinationPath, err := getDestinationPath(data, false)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "Unable to determine destination directory: %q", err)
+				fmt.Fprintf(os.Stderr, "Unable to determine destination directory: %q\n", err)
 			}
 			// Ensure directory exists
-			if os.MkdirAll(destinationPath, os.ModePerm); err != nil {
-				fmt.Fprintf(os.Stderr, "Unable to create directory %s: %q", destinationPath, err)
+			if err := os.MkdirAll(destinationPath, os.ModePerm); err != nil {
+				fmt.Fprintf(os.Stderr, "Unable to create directory %s: %q\n", destinationPath, err)
 			}
 
 			destinationFilename := data.Title + " (" + data.Year + ")" + filepath.Ext(file)
@@ -52,7 +52,7 @@ var moviesCmd = &cobra.Command{
 
 			// TODO: Move or copy the file, depending on flag.
 			if _, err := copyFile(file, finalFile); err != nil {
-				fmt.Fprintf(os.Stderr, "Unable to write file %s: %q", finalFile, err)
+				fmt.Fprintf(os.Stderr, "Unable to write file %s: %q\n", finalFile, err)
 			} else {
 				if viper.GetBool("verbose") {
 					fmt.Println("Wrote", finalFile)
