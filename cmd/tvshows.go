@@ -34,7 +34,7 @@ var showsCmd = &cobra.Command{
 		for _, file := range fileList {
 			data, err := media.ParseFilename(file, true)
 			if err != nil {
-				fmt.Fprintf(os.Stderr, "Unable to identify %s", file)
+				fmt.Fprintf(os.Stderr, "Unable to identify %s\n", file)
 				continue
 			}
 
