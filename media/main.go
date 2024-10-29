@@ -26,6 +26,10 @@ func ParseFilename(filename string, tvShow bool) (Media, error) {
 		if err != nil {
 			return Media{}, err
 		}
-		return Media{Title: title, Year: year}, nil
+		genre, err := getPrimaryGenre(title, year)
+		if err != nil {
+			return Media{Title: title, Year: year}, err
+		}
+		return Media{Title: title, Year: year, Genre: genre}, nil
 	}
 }
