@@ -116,7 +116,7 @@ Unable to write file ~/Videos/TV/The Rookie/Season 06/The Rookie S06E07.mkv: "~/
 ### :movie_camera: Movies
 
 ```
-$ mediamovier -v movies ~/Downloads/Movies
+$ mediamover -v movies ~/Downloads/Movies
 Wrote ~/Videos/Movies/Action/The Killers Game (2024).mkv
 Wrote ~/Videos/Movies/Comedy/The Radleys (2024).mkv
 Wrote ~/Videos/Movies/Horror/Opera (1987).mkv
