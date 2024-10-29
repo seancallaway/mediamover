@@ -110,6 +110,10 @@ func getPrimaryGenre(title string, year string) (string, error) {
 		return "", errors.New("no movie found")
 	}
 
+	if len(movies.Results[0].GenreIds) == 0 {
+		return "", errors.New("no genre found")
+	}
+
 	genreId := movies.Results[0].GenreIds[0]
 
 	return genreMap[genreId], nil
