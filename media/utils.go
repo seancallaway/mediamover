@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// getExtensionList returns a list of file extensions for video and subtitle files.
 func getExtensionList() []string {
 	return []string{
 		".avi",
@@ -15,6 +16,7 @@ func getExtensionList() []string {
 		".mpeg",
 		".mpg",
 		".mov",
+		".srt",
 	}
 }
 
